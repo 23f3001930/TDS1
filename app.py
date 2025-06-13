@@ -725,6 +725,9 @@ async def health_check():
             status_code=500,
             content={"status": "unhealthy", "error": str(e), "api_key_set": bool(API_KEY)}
         )
+@app.get("/")
+async def root():
+    return {"message": "🎉 FastAPI app is deployed on Vercel and running successfully!"}
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
