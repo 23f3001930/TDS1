@@ -1,4 +1,4 @@
-# app.py
+from fastapi import Request# app.py
 import os
 import json
 import sqlite3
@@ -725,6 +725,13 @@ async def health_check():
             status_code=500,
             content={"status": "unhealthy", "error": str(e), "api_key_set": bool(API_KEY)}
         )
+@app.post("/")
+async def proxy_to_query(request: Request):
+    data = await request.json()
+    question = data.get("question")
+    image = data.get("image")
+    return await query_knowledge_base(QueryRequest(question=question, image=image))
+
 @app.get("/")
 async def root():
     return {"message": " FastAPI app is deployed on Vercel and running successfully!"}
