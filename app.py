@@ -16,6 +16,10 @@ from fastapi.responses import JSONResponse
 import uvicorn
 import traceback
 from dotenv import load_dotenv
+from dotenv import load_dotenv
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY") 
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
