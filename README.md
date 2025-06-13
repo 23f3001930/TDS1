@@ -44,6 +44,10 @@ pip install numpy
 ```
 uvicorn app:app --reload
 ```
+```
+promptfoo eval -c promptfooconfig.yaml --env-file .env
+```
+
 ## Deployment
 
 Deployable on platforms like Vercel (serverless) or better: Railway, Render, or Fly.io for persistent DB support.
